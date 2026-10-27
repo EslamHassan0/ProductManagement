@@ -1,0 +1,76 @@
+@ProductManagement_HostAddress = http://localhost:5264
+
+GET {{ProductManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Create Product 
+POST {{ProductManagement_HostAddress}}/api/products
+Content-Type: application/json
+{
+  "name": "Mouse",
+  "price": 650
+}
+###
+
+### Create Product - Invalid Price
+POST {{ProductManagement_HostAddress}}/api/products
+Content-Type: application/json
+{
+  "name": "Keyboard",
+  "price": -50
+}
+### Get All Poduct 
+GET {{ProductManagement_HostAddress}}/api/products
+Accept: application/json
+
+### Get Product 
+GET {{ProductManagement_HostAddress}}/api/products/1
+Accept: application/json
+
+### Get Product - Not Found
+GET {{ProductManagement_HostAddress}}/api/products/9999
+Accept: application/json
+
+
+### Update Product
+PUT {{ProductManagement_HostAddress}}/api/products/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Mechanical Keyboard",
+  "price": 1200
+}
+
+###
+
+### Update Product - Not Found
+PUT {{ProductManagement_HostAddress}}/api/products/9999
+Content-Type: application/json
+
+{
+  "id": 9999,
+  "name": "Unknown Product",
+  "price": 500
+}
+
+
+### Update Product - Invalid Price
+PUT {{ProductManagement_HostAddress}}/api/products/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Keyboard",
+  "price": -50
+}
+
+
+
+### Delete Product
+DELETE {{ProductManagement_HostAddress}}/api/products/1
+
+###
+
+### Delete Product - Not Found
+DELETE {{ProductManagement_HostAddress}}/api/products/9999
